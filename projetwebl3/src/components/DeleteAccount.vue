@@ -2,16 +2,16 @@
     <div>
       <AppMenu></AppMenu>
       <h1>Change Password</h1>
-      <form @submit.prevent="updatePassword">
-        <div>
+      <form @submit.prevent="updatePassword" class="container mt-4">
+        <div class="form-group">
           <label for="email">Email:</label>
-          <input type="text" v-model="email" id="email" required />
+          <input type="text" v-model="email" id="email" required class="form-control"/>
         </div>
-        <div>
+        <div class="form-group">
           <label for="currentPassword">Current Password:</label>
-          <input type="password" v-model="password" id="password" required />
+          <input type="password" v-model="password" id="password" required class="form-control"/>
         </div>
-        <button type="submit">Delete Account</button>
+        <button type="submit" class="btn btn-primary mt-3">Delete Account</button>
         <p v-if="error" class="error">{{ error }}</p>
       </form>
     </div>

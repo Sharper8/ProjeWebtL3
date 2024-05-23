@@ -1,26 +1,25 @@
 <template>
-  <div>
+  <div class="container-fluid p-0">
     <AppMenu></AppMenu>
-    <h2>Connexion</h2>
-    <form @submit.prevent="login">
-      <div>
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="email" required>
-      </div>
-      <div>
-        <label for="password">Mot de passe:</label>
-        <input type="password" id="password" v-model="password" required>
-      </div>
-      <button type="submit">Se connecter</button>
-      <p v-if="error" class="error">{{ error }}</p>
-    </form>
-
-    <!-- Indicateur de connexion
-    <div v-if="this.$store.isLoggedIn" class="connected-indicator">
-      Vous êtes connecté en tant que {{ email }}.
-    </div> -->
+    <div class="container mt-4">
+      <h2 class="mb-4">Connexion</h2>
+      <form @submit.prevent="login">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" v-model="email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Mot de passe:</label>
+          <input type="password" id="password" v-model="password" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+        <p v-if="error" class="text-danger mt-2">{{ error }}</p>
+      </form>
+    </div>
   </div>
 </template>
+
+
 
 <script>
 import AppMenu from './AppMenu.vue';

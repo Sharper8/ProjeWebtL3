@@ -2,26 +2,26 @@
   <div>
     <AppMenu></AppMenu>
     <h1>Change Password</h1>
-    <form @submit.prevent="updatePassword">
-      <div>
-        <label for="email">Email:</label>
-        <input type="text" v-model="email" id="email" required />
-      </div>
-      <div>
-        <label for="currentPassword">Current Password:</label>
-        <input type="password" v-model="currentPassword" id="currentPassword" required />
-      </div>
-      <div>
-        <label for="newPassword">New Password:</label>
-        <input type="password" v-model="newPassword" id="newPassword" required />
-      </div>
-      <div>
-        <label for="confirmPassword">Confirm New Password:</label>
-        <input type="password" v-model="confirmPassword" id="confirmPassword" required />
-      </div>
-      <button type="submit">Update Password</button>
-      <p v-if="error" class="error">{{ error }}</p>
-    </form>
+    <form @submit.prevent="updatePassword" class="container mt-4">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="text" v-model="email" id="email" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="currentPassword">Current Password:</label>
+      <input type="password" v-model="currentPassword" id="currentPassword" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="newPassword">New Password:</label>
+      <input type="password" v-model="newPassword" id="newPassword" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Confirm New Password:</label>
+      <input type="password" v-model="confirmPassword" id="confirmPassword" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Update Password</button>
+    <p v-if="error" class="text-danger mt-2">{{ error }}</p>
+  </form>
   </div>
 </template>
 
@@ -87,7 +87,4 @@
 </script>
 
 <style scoped>
-.error {
-    color: red;
-  }
 </style>

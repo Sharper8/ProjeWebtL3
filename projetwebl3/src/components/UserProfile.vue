@@ -1,17 +1,18 @@
 <template>
-    <div>
-      <!-- Afficher le message de bienvenue si l'utilisateur est connecté -->
-      <AppMenu></AppMenu>
-      <div v-if="isLoggedIn" class="welcome-banner">
-        Bienvenue {{ username }}, vous êtes {{ role }}
-        <button @click="logout()">Déconnexion</button>
-        <button @click="chpw()">Edit password</button>
-        <button @click="deac()">Delete Account</button>
-        <!-- <button @click="testAdmin()">TestAdmion</button> -->
+  <div>
+    <!-- Afficher le message de bienvenue si l'utilisateur est connecté -->
+    <AppMenu></AppMenu>
+    <div v-if="isLoggedIn" class="welcome-banner alert alert-success">
+      Bienvenue {{ username }}, vous êtes {{ role }}
+      <div class="mt-3">
+        <button @click="chpw()" class="btn btn-warning m-3">Edit password</button>
+        <button @click="deac()" class="btn btn-danger m-3">Delete Account</button>
+        <button @click="logout()" class="btn btn-danger m-3">Déconnexion</button>
       </div>
-      <!-- make a button appear if the user is admin-->
     </div>
-  </template>
+    <!-- make a button appear if the user is admin-->
+  </div>
+</template>
   
   <script>
   import { jwtDecode } from 'jwt-decode';

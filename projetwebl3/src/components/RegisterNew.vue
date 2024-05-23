@@ -1,25 +1,28 @@
 <template>
-    <div>
-      <AppMenu></AppMenu>
-      <h2>Inscription</h2>
+  <div class="container-fluid p-0">
+    <AppMenu></AppMenu>
+    <div class="container mt-4">
+      <h2 class="mb-4">Inscription</h2>
       <form @submit.prevent="register">
-        <div>
+        <div class="form-group">
           <label for="username">Nom d'utilisateur:</label>
-          <input type="text" id="username" v-model="username" required>
+          <input type="text" id="username" v-model="username" class="form-control" required>
         </div>
-        <div>
+        <div class="form-group">
           <label for="email">Email:</label>
-          <input type="email" id="email" v-model="email" required>
+          <input type="email" id="email" v-model="email" class="form-control" required>
         </div>
-        <div>
+        <div class="form-group">
           <label for="password">Mot de passe:</label>
-          <input type="password" id="password" v-model="password" required>
+          <input type="password" id="password" v-model="password" class="form-control" required>
         </div>
-        <button type="submit">S'inscrire</button>
-        <p v-if="error" class="error">{{ error }}</p>
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+        <p v-if="error" class="text-danger mt-2">{{ error }}</p>
       </form>
     </div>
-  </template>
+  </div>
+</template>
+
   
   <script>
   import AppMenu from './AppMenu.vue';
@@ -72,7 +75,7 @@
               //}
               this.$router.push('/profile');
             });
-        } else {
+            } else {
             // Afficher un message d'erreur avec le contenu de la réponse
             response.json().then(data => {
             this.error = data.message;

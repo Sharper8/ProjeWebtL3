@@ -1,31 +1,39 @@
 <template>
-  <div class="jumbotron jumbotron-fluid bg-secondary rounded-bottom rounded-top" style="padding-top: 30px; padding-bottom: 30px; padding-left: 30px;">
-    <div class="banner-text text-white">
+  <div class="jumbotron jumbotron-fluid bg-secondary rounded-bottom rounded-top p-4">
+    <div class="d-flex justify-content-between align-items-center text-white">
       <h1>VueJs Shopping App</h1>
-      <!-- //tester les routes -->
+      <!-- Tester les routes -->
       <nav>
-        <!-- <router-link to="/">Accueil</router-link>
-        <router-link to="/products">Produits</router-link>
-        <router-link v-if="isLoggedIn" to="/orders">Commandes</router-link>
-        <router-link v-if="!isLoggedIn" to="/register">Creer compte</router-link>
-        <router-link v-if="!isLoggedIn" to="/login">Se connecter</router-link>
-        <router-link v-if="isLoggedIn" to="/profile">Profil</router-link>
-        <router-link v-if="isLoggedIn && isAdmin" to="/admin/dashboard">Tableau de bord administrateur</router-link> -->
-
-        <ul>
-          <li> <router-link to="/">Accueil</router-link></li>
-          <li ><router-link to="/products">Produits</router-link></li>
-          <li v-if="isAuthenticated"><router-link to="/profile">Profil</router-link></li>
-          <li v-if="isAuthenticated"><router-link to="/orders">Commandes</router-link></li>
-          <li v-if="!isAuthenticated"><router-link to="/register">Creer compte</router-link></li>
+        <ul class="nav">
+          <li class="nav-item">
+            <router-link to="/" class="nav-link text-white">Accueil</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/products" class="nav-link text-white">Produits</router-link>
+          </li>
+          <li v-if="isAuthenticated" class="nav-item">
+            <router-link to="/profile" class="nav-link text-white">Profil</router-link>
+          </li>
+          <li v-if="isAuthenticated" class="nav-item">
+            <router-link to="/orders" class="nav-link text-white">Commandes</router-link>
+          </li>
+          <li v-if="!isAuthenticated" class="nav-item">
+            <router-link to="/register" class="nav-link text-white">Créer compte</router-link>
+          </li>
           <!-- <li v-if="isLoggedIn"><button @click="logout">Déconnexion</button></li> -->
-          <li v-if="!isAuthenticated"><router-link to="/login">Connexion</router-link></li>
-          <li v-if="isAuthenticated && isAdmin"><router-link to="/AdminDashboard">Admin Dashboard</router-link></li>
-      </ul>
+          <li v-if="!isAuthenticated" class="nav-item">
+            <router-link to="/login" class="nav-link text-white">Connexion</router-link>
+          </li>
+          <li v-if="isAuthenticated && isAdmin" class="nav-item">
+            <router-link to="/AdminDashboard" class="nav-link text-white">Admin Dashboard</router-link>
+          </li>
+        </ul>
       </nav>
     </div>
   </div>
 </template>
+
+
 
 <script>
 // import AppMenu from './AppMenu.vue';
