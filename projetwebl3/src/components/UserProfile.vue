@@ -5,7 +5,8 @@
       <div v-if="isLoggedIn" class="welcome-banner">
         Bienvenue {{ username }}, vous êtes {{ role }}
         <button @click="logout()">Déconnexion</button>
-        <button @click="move()">Edit password</button>
+        <button @click="chpw()">Edit password</button>
+        <button @click="deac()">Delete Account</button>
         <!-- <button @click="testAdmin()">TestAdmion</button> -->
       </div>
       <!-- make a button appear if the user is admin-->
@@ -48,16 +49,13 @@
       logout() {
         // Effacer les informations d'authentification du stockage local
         localStorage.removeItem('token');
-        // Mettre à jour l'état de connexion
-        // this.isLoggedIn = false;
-        // this.$store.commit('setLoggedIn', false); // Pour connecter l'utilisateur
-        // this.$store.commit('setIsAdmin', false); // Pour définir l'utilisateur comme administrateur
-
-        // Rediriger l'utilisateur vers la page de connexion ou toute autre page appropriée
         this.$router.push('/login');
       },
-      move(){
+      chpw(){
         this.$router.push('/change-password');
+      },
+      deac(){
+        this.$router.push('/delete-account');
       }
     }
   };

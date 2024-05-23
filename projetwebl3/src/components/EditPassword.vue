@@ -20,7 +20,7 @@
         <input type="password" v-model="confirmPassword" id="confirmPassword" required />
       </div>
       <button type="submit">Update Password</button>
-      <p v-if="message">{{ message }}</p>
+      <p v-if="error" class="error">{{ error }}</p>
     </form>
   </div>
 </template>
@@ -39,13 +39,13 @@
       currentPassword: '',
       newPassword: '',
       confirmPassword: '',
-      message: ''
+      error: ''
     };
   },
   methods: {
     async updatePassword() {
       if (this.newPassword !== this.confirmPassword) {
-        this.message = 'New passwords do not match.';
+        this.error = 'New passwords do not match.';
         return;
       }
       fetch('http://localhost:3000/change-password', {
@@ -60,6 +60,16 @@
             confirmPassword: this.confirmPassword
           })
         })
+        .then(response => {
+          if (response.ok) {
+              alert('Password changed')
+              this.$router.push('/profile');
+            }
+            else {
+            this.error = 'Identifiants invalides';
+            }
+          })
+        
 
       // try {
       //   const response = await axios.post('http://localhost:3000/change-password', {

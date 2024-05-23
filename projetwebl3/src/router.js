@@ -10,6 +10,7 @@ import Login from './components/LoginPop.vue';
 import UserProfile from './components/UserProfile.vue';
 import AdminDashboard from './components/AdminDashboard.vue';
 import EditPassword from './components/EditPassword.vue';
+import DeleteAccount from './components/DeleteAccount.vue';
 import NotFound from './components/NotFound.vue';
 
 //libs
@@ -29,6 +30,7 @@ const routes = [
   { path: '/login', component: Login },
   { path: '/profile', component: UserProfile },
   { path: '/change-password', name: 'EditPassword', component: EditPassword, meta: { requiresAuth: true } },
+  { path: '/Delete-account', name: 'DeleteAccount', component: DeleteAccount, meta: { requiresAuth: true } },
   {path: '/AdminDashboard', 
       component: AdminDashboard,
       meta: { requiresAuth: true, requiresAdmin: true }

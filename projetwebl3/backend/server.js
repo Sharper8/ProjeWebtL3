@@ -95,79 +95,143 @@ app.post('/change-password', (req, res) => {
       res.status(500).json({ message: 'Erreur serveur' });
       return;
     }
+    
+  
+    if (results.length > 0) {
+      
+      // Utilisateur trouvé, vérifier le mot de passe
+      const user = results[0];
+      bcrypt.compare(currentPassword, user.password, (err, isMatch) => {
+        if (!isMatch) {
+          console.log('nomatch');
+          console.error('Erreur lors de la comparaison des mots de passe:', err);
+          res.status(500).json({ error: 'Mot de passe invalide' });
+          return;
+        }
+        if (isMatch){
+          console.log('match');
+          bcrypt.hash(newPassword, 10, (err, hash) => {
+            if (err) {
+                console.error(err);
+                return;
+            }
+        
+            // Update the password in the database
+      
+           connection.query('UPDATE users SET password = ? WHERE email = ?', [hash, email], (err, results) => {
+            if (err) {
+              console.error('Error updating password:', err);
+              return res.status(500).json({ message: 'Server error' });
+            }
+      
+            res.status(200).json({ message: 'Password updated successfully' });
+          })
+        });
+        }
+      });
+      
+    } else {
+      // Utilisateur non trouvé
+      res.status(401).json({ message: 'Identifiants invalides' });
+    }
+    // Hash the new password
+    
+     
+
+  });
+  
+});
+
+// End of change password
+//..................................
+
+// Delete Account
+//=====================
+app.post('/delete-account', (req, res) => {
+
+  console.log('route del', req.body);
+  const { email, password } = req.body;
+  connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
+    if (error) {
+      console.error('Erreur lors de la vérification des identifiants:', error);
+      res.status(500).json({ message: 'Erreur serveur' });
+      return;
+    }
   
     if (results.length > 0) {
       // Utilisateur trouvé, vérifier le mot de passe
       const user = results[0];
-      bcrypt.compare(currentPassword, user.password, (err, isMatch) => {
+      bcrypt.compare(password, user.password, (err, isMatch) => {
         if (err) {
           console.error('Erreur lors de la comparaison des mots de passe:', err);
-          res.status(500).json({ message: 'Mot de passe invalide' });
+          res.status(500).json({ message: 'Erreur serveur' });
           return;
+        }
+        if (isMatch) {
+          connection.query('DELETE FROM users WHERE email = ?', [email], (err, results) => {
+            if (err) {
+              console.error('Error deleting account:', err);
+              return res.status(500).json({ message: 'Server error' });
+            }
+      
+            res.status(200).json({ message: 'Account deleted successfully' });
+          })
+        } else {
+          // Mot de passe incorrect
+          res.status(401).json({ message: 'Identifiants invalidesBE' });
         }
       });
     } else {
       // Utilisateur non trouvé
       res.status(401).json({ message: 'Identifiants invalides' });
     }
-    // Hash the new password
-    bcrypt.hash(newPassword, 10, (err, hash) => {
-      if (err) {
-          console.error(err);
-          return;
-      }
-  
-      // Update the password in the database
-
-     connection.query('UPDATE users SET password = ? WHERE email = ?', [hash, email], (err, results) => {
-      if (err) {
-        console.error('Error updating password:', err);
-        return res.status(500).json({ message: 'Server error' });
-      }
-
-      res.status(200).json({ message: 'Password updated successfully' });
-    })
   });
+  // const { email, currentPassword } = req.body;
+  // connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
+  //   if (error) {
+  //     console.error('Erreur lors de la vérification des identifiants:', error);
+  //     res.status(500).json({ message: 'Erreur serveur' });
+  //     return;
+  //   }
+    
+  
+  //   if (results.length > 0) {
+      
+  //     // Utilisateur trouvé, vérifier le mot de passe
+  //     const user = results[0];
+  //     bcrypt.compare(currentPassword, user.password, (err, isMatch) => {
+  //       if (!isMatch) {
+  //         console.log('nomatch');
+  //         console.error('Erreur lors de la comparaison des mots de passe:', err);
+  //         res.status(500).json({ error: 'Mot de passe invalide' });
+  //         return;
+  //       }
+  //       if (isMatch){
+          
+  //         console.log('match');
+          // connection.query('DELETE FROM users WHERE email = ?', [email], (err, results) => {
+          //   if (err) {
+          //     console.error('Error deleting account:', err);
+          //     return res.status(500).json({ message: 'Server error' });
+          //   }
+      
+          //   res.status(200).json({ message: 'Account deleted successfully' });
+          // })
+  //       }
+  //     });
+      
+  //   } else {
+  //     // Utilisateur non trouvé
+  //     res.status(401).json({ message: 'Identifiants invalides' });
+  //   }
+  //   // Hash the new password
+    
      
 
   });
-  // Fetch the current password hash from the database
-  // connection.query('SELECT password FROM users WHERE id = ?', [userId], async (err, results) => {
-  //   if (err) {
-  //     console.error('Error fetching user:', err);
-  //     return res.status(500).json({ message: 'Server error' });
-  //   }
-
-  //   if (results.length === 0) {
-  //     return res.status(404).json({ message: 'User not found' });
-  //   }
-
-  //   const currentPasswordHash = results[0].password;
-
-  //   // Compare the current password with the hash
-  //   const match = await bcrypt.compare(currentPassword, currentPasswordHash);
-  //   if (!match) {
-  //     return res.status(400).json({ message: 'Current password is incorrect' });
-  //   }
-
-  //   // Hash the new password
-  //   const newPasswordHash = await bcrypt.hash(newPassword, 10);
-
-  //   // Update the password in the database
-  //   db.query('UPDATE users SET password = ? WHERE id = ?', [newPasswordHash, userId], (err, results) => {
-  //     if (err) {
-  //       console.error('Error updating password:', err);
-  //       return res.status(500).json({ message: 'Server error' });
-  //     }
-
-  //     res.status(200).json({ message: 'Password updated successfully' });
-  //   });
-  // });
-});
-
-// End of change password
-//..................................
-
+  
+// End of Delete Account
+//================
 // Route pour l'authentification
 app.post('/login', (req, res) => {
   console.log('route login', req.body);
