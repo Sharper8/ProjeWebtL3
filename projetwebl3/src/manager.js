@@ -23,21 +23,21 @@ class Stock {
     }
 
     init() {
-        this.list_product.push(new Product(1, "Germinal 1", "description germinal 1", 10, 10));
-        this.list_product.push(new Product(2, "Germinal 2", "description germinal 2", 20, 7));
-        this.list_product.push(new Product(3, "Germinal 3", "description germinal 3", 30, 5));
-        this.list_product.push(new Product(4, "Germinal 4", "description germinal 4", 40, 9));
-        this.list_product.push(new Product(5, "Germinal 5", "description germinal 5", 50, 4));
-        this.list_product.push(new Product(6, "Germinal 6", "description germinal 6", 60, 5));
-        this.list_product.push(new Product(7, "Germinal 7", "description germinal 7", 70, 3));
-        this.list_product.push(new Product(8, "Germinal 8", "description germinal 8", 80, 11));
-        this.list_product.push(new Product(9, "Germinal 9", "description germinal 9", 90, 8));
-        this.list_product.push(new Product(10, "Germinal 10", "description germinal 10", 100, 5));
-        this.list_product.push(new Product(11, "Germinal 11", "description germinal 11", 110, 9));
+        this.list_product.push(new Product(1, "Mystery Box 1", "Mystery Box avec 1 objet", 10, 10));
+        this.list_product.push(new Product(2, "Mystery Box 2", "Mystery Box avec 2 objets", 20, 7));
+        this.list_product.push(new Product(3, "Mystery Box 3", "Mystery Box avec 3 objets", 30, 5));
+        this.list_product.push(new Product(4, "Mystery Box 4", "Mystery Box avec 4 objets", 40, 9));
+        this.list_product.push(new Product(5, "Mystery Box 5", "Mystery Box avec 5 objets", 50, 4));
+        this.list_product.push(new Product(6, "Mystery Box 6", "Mystery Box avec 6 objets", 60, 5));
+        this.list_product.push(new Product(7, "Mystery Box 7", "Mystery Box avec 7 objets", 70, 3));
+        this.list_product.push(new Product(8, "Mystery Box 8", "Mystery Box avec 8 objets", 80, 11));
+        this.list_product.push(new Product(9, "Mystery Box 9", "Mystery Box avec 9 objets", 90, 8));
+        this.list_product.push(new Product(10, "Mystery Box 10", "Mystery Box avec 10 objets", 100, 5));
+        this.list_product.push(new Product(11, "Mystery Box 11", "Mystery Box avec 11 objets", 110, 9));
     }
 }
 
-// Creating a singleton instance for Stock
+// Creer une instance 
 const stockInstance = new Stock();
 
 class Cart {

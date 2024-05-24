@@ -1,7 +1,7 @@
 <template>
     <div>
       <AppMenu></AppMenu>
-      <h1>Change Password</h1>
+      <h1>Delete Account</h1>
       <form @submit.prevent="updatePassword" class="container mt-4">
         <div class="form-group">
           <label for="email">Email:</label>

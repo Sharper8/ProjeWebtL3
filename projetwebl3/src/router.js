@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // Importez vos composants pour chaque route
-import Home from './components/HomePage.vue';
+//import Home from './components/HomePage.vue';
 import Products from './components/ProductsPage.vue';
 import Orders from './components/OrdersPage.vue';
 import Register from './components/RegisterNew.vue';
@@ -22,7 +22,7 @@ Vue.use(VueRouter);
 
 // Définissez vos routes
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', component: Products },
   { path: '*', component: NotFound },
   { path: '/products', component: Products },
   { path: '/orders', component: Orders },

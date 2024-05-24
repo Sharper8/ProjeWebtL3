@@ -17,17 +17,17 @@ order
             <div class="p-3 border bg-light">
               <h5>Total des ventes: {{ sales_amount }} €</h5>
               <h6>Nombre de commandes: {{ sales_nb }}</h6>
-              <h6>Germinal 1 ventes: {{ g1_sales }}</h6>
-              <h6>Germinal 2 ventes: {{ g2_sales }}</h6>
-              <h6>Germinal 3 ventes: {{ g3_sales }}</h6>
-              <h6>Germinal 4 ventes: {{ g4_sales }}</h6>
-              <h6>Germinal 5 ventes: {{ g5_sales }}</h6>
-              <h6>Germinal 6 ventes: {{ g6_sales }}</h6>
-              <h6>Germinal 7 ventes: {{ g7_sales }}</h6>
-              <h6>Germinal 8 ventes: {{ g8_sales }}</h6>
-              <h6>Germinal 9 ventes: {{ g9_sales }}</h6>
-              <h6>Germinal 10 ventes: {{ g10_sales }}</h6>
-              <h6>Germinal 11 ventes: {{ g11_sales }}</h6>
+              <h6>Mystery Box 1 ventes: {{ g1_sales }}</h6>
+              <h6>Mystery Box 2 ventes: {{ g2_sales }}</h6>
+              <h6>Mystery Box 3 ventes: {{ g3_sales }}</h6>
+              <h6>Mystery Box 4 ventes: {{ g4_sales }}</h6>
+              <h6>Mystery Box 5 ventes: {{ g5_sales }}</h6>
+              <h6>Mystery Box 6 ventes: {{ g6_sales }}</h6>
+              <h6>Mystery Box 7 ventes: {{ g7_sales }}</h6>
+              <h6>Mystery Box 8 ventes: {{ g8_sales }}</h6>
+              <h6>Mystery Box 9 ventes: {{ g9_sales }}</h6>
+              <h6>Mystery Box 10 ventes: {{ g10_sales }}</h6>
+              <h6>Mystery Box 11 ventes: {{ g11_sales }}</h6>
             </div>
           </div>
         </div>

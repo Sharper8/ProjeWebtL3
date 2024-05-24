@@ -9,15 +9,16 @@ product
       <div class="col-md-9">
         <div class="row gx-4 gy-4 row-cols-3">
           <div class="col" v-for="product in list_products" :key="product.id">
-            <div class="p-3 border bg-light">
-              <h5>{{ product.name }}</h5>
+            <div class="p-3 border card bg-light">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <img src="../assets/mystery.webp" class="card-img w-50 h-50 m-4" alt="Image de la carte">
               <p>{{ product.desc }}</p>
               <p>Prix: {{ product.price }} €</p>
               <p>Stock: {{ product.stock }}</p>
               <button
                 v-if="product.stock > 0"
                 type="button"
-                class="btn btn-success btn-sm"
+                class="btn btn-primary btn-sm"
                 @click="add_to_cart(product.id)"
                 >Ajouter au panier</button>
                 <span v-else class="text-danger">En rupture de stock</span>
@@ -28,7 +29,7 @@ product
       <!-- Cart -->
       <div class="col-6 col-md-3">
         <div class="col">
-          <div class="p-3 border bg-success">
+          <div class="p-3 border bg-primary">
             <h5>Cart</h5>
           </div>
         </div>
@@ -38,13 +39,13 @@ product
               {{ get_info_product(id) }}
               <h5>{{ desc_product.name }}</h5>
               <h6>Quantité: {{ value }}</h6>
-              <button type="button" class="btn btn-success btn-sm" @click="remove_from_cart(id)">Supprimer</button>
+              <button type="button" class="btn btn-primary btn-sm" @click="remove_from_cart(id)">Supprimer</button>
             </div>
           </div>
           <!-- show total -->
           <div class="col">
-            <div class="p-3 border bg-success">
-              <h5>Total: {{ total_price }}</h5>
+            <div class="p-3 border bg-primary">
+              <h5>Total: {{ total_price }} €</h5>
               <h6>Nombre de produits: {{ nbr_product }}</h6>
             </div>
           </div>

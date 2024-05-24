@@ -1,7 +1,7 @@
 <template>
-  <div class="jumbotron jumbotron-fluid bg-secondary rounded-bottom rounded-top p-4">
+  <div class="jumbotron jumbotron-fluid bg-primary p-4">
     <div class="d-flex justify-content-between align-items-center text-white">
-      <h1>VueJs Shopping App</h1>
+      <h1>Free Prix</h1>
       <!-- Tester les routes -->
       <nav>
         <ul class="nav">
